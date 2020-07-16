@@ -97,9 +97,6 @@ data_extend = np.concatenate((data, data_noise), axis=0)
 
 Although this is fairly simple, it allowed me to slightly boost my detection score.
 
-#### Other methods
-
-Additional methods include drifting, random time warping, pooling,... I've used briefly an interesting package called <a href="https://pypi.org/project/tsaug/">tsaug</a>.
 
 ## 3. Dimension reduction
 
