@@ -1,4 +1,4 @@
-# Airbus-Anomaly-Detection-Project.ipynb
+# Airbus Anomaly Detection Project
 
 <p align="center"><img src="https://github.com/savoga/data-challenge-anomaly-detection/blob/master/img/airbus_helicopters.png"></img></p>
 
