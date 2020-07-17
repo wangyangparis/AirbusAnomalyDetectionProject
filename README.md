@@ -74,7 +74,7 @@ Clearly these two series follow the same pattern, but the blue curve is longer t
 
 #### Periodogram-based distance
 
-<p align="center"><img src="https://github.com/wangyangparis/AirbusAnomalyDetectionProject/blob/master/Images/spectrum.png" width="450" ></img></p>
+<p align="center"><img src="/Images/spectrum.png" width="450" ></img></p>
 
 #### Build fonctionnal space¶
 The Nyquist–Shannon sampling theorem is a theorem in the field of digital signal processing which serves as a fundamental bridge between continuous-time signals and discrete-time signals. It establishes a sufficient condition for a sample rate that permits a discrete sequence of samples to capture all the information from a continuous-time signal of finite bandwidth.
