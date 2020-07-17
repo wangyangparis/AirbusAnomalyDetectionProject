@@ -33,12 +33,13 @@ There are in total 2511 test observations.
 
 ## Introduction
 1.1 What can be the anormalies?
-1.1.1 Aircrafte Flutter
+
 1.2 What are the possible approaches?
 1.2.1 Raw signal time series observation 
 1.2.2 Time Series Clustering
 1.2.3 Similarity
 1.2.4 DTW (Dynamic Time Warping)
+
 1.3 Periodogram-based distance
 1.4 First order/seconde order derivative and other feature engenieering 1.5 Build fonctionnal space
 1.6 Interpolation - Spline
