@@ -2,7 +2,7 @@
 
 
 <p align="center"><img 
-                      src="https://upload.wikimedia.org/wikipedia/fr/archive/f/fd/20170531111620%21Airbus_helicopters_logo_2014.jpg"></p>
+                      src="https://upload.wikimedia.org/wikipedia/fr/archive/f/fd/20170531111620%21Airbus_helicopters_logo_2014.jpg" width="300"></p>
 
 Dedication:
 First of all, I would like to dedicate this work to Louis Charles BREGUET, designer, builder, pioneer and inventor of modern helicopter.
