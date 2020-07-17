@@ -1,8 +1,6 @@
 # Airbus Anomaly Detection Project
 
 
-<p align="center"><img src="https://raw.githubusercontent.com/wangyangparis/AirbusAnomalyDetectionProject/master/Images/DTW.jpeg" width="450"></img></p>
-
 <p align="center"><img 
                       src="https://github.com/savoga/data-challenge-anomaly-detection/blob/master/img/airbus_helicopters.PNG"></p>
 
@@ -69,7 +67,7 @@ The objective of time series comparison methods is to produce a distance metric 
 ### DTW (Dynamic Time Warping)
 In time series analysis, dynamic time warping (DTW) is one of the algorithms for measuring similarity between two temporal sequences, which may vary in speed. For instance, similarities in walking could be detected using DTW, even if one person was walking faster than the other, or if there were accelerations and decelerations during the course of an observation.
 
-<p align="center"><img src="https://raw.githubusercontent.com/wangyangparis/AirbusAnomalyDetectionProject/blob/master/Images/DTW.jpeg" width="450"></img></p>
+<p align="center"><img src="https://raw.githubusercontent.com/wangyangparis/AirbusAnomalyDetectionProject/master/Images/DTW.jpeg" width="450"></img></p>
 
 
 Clearly these two series follow the same pattern, but the blue curve is longer than the red. If we apply the one-to-one match, shown in the top, the mapping is not perfectly synced up and the tail of the blue curve is being left out. DTW overcomes the issue by developing a one-to-many match so that the troughs and peaks with the same pattern are perfectly matched, and there is no left out for both curves(shown in the bottom top).
@@ -77,7 +75,7 @@ Clearly these two series follow the same pattern, but the blue curve is longer t
 
 #### Periodogram-based distance
 
-<p align="center"><img src="/Images/spectrum.png" width="450" ></img></p>
+<p align="center"><img src="https://raw.githubusercontent.com/wangyangparis/AirbusAnomalyDetectionProject/master/Images/spectrum.png" width="450" ></img></p>
 
 #### Build fonctionnal space¶
 The Nyquist–Shannon sampling theorem is a theorem in the field of digital signal processing which serves as a fundamental bridge between continuous-time signals and discrete-time signals. It establishes a sufficient condition for a sample rate that permits a discrete sequence of samples to capture all the information from a continuous-time signal of finite bandwidth.
@@ -97,19 +95,19 @@ Frequency domain refers to the analysis of mathematical functions or signals wit
 
 #### Perodogram
 
-<p align="center"><img src="https://github.com/wangyangparis/AirbusAnomalyDetectionProject/blob/master/Images/PSD.png" width="450" ></img></p>
+<p align="center"><img src="https://raw.githubusercontent.com/wangyangparis/AirbusAnomalyDetectionProject/master/Images/PSD.png" width="450" ></img></p>
 
 #### FFT Fast Fourier Transformation
 The DTFT, X(e jΩ), is periodic. One period extends from f = 0 to fs, where fs is the sampling frequency.
 
 The FFT contains information between 0 and fs, however, we know that the sampling frequency 5 must be at least twice the highest frequency component. Therefore, the signal’s spectrum should be entirly below fs 2 , the Nyquist frequency.
 
-<p align="center"><img src="https://github.com/wangyangparis/AirbusAnomalyDetectionProject/blob/master/Images/FFT.png" width="450" ></img></p>
+<p align="center"><img src="https://raw.githubusercontent.com/wangyangparis/AirbusAnomalyDetectionProject/master/Images/FFT.png" width="450" ></img></p>
 
 I observe the great difference of global patern of train and test dataset, in the test dataset, a lot of samples are concentrated on 0Hz frenquency. While in the train dataset we can see a very strong density around 50Hz and 100Hz, and their multiples. This corresponde an hypothese of self-exciting ocillation anormaly.
 
-<p align="center"><img src="https://github.com/wangyangparis/AirbusAnomalyDetectionProject/blob/master/Images/STFTtrain.png" width="600" ></img></p>
-<p align="center"><img src="https://github.com/wangyangparis/AirbusAnomalyDetectionProject/blob/master/Images/STFTtest.png" width="600" ></img></p>
+<p align="center"><img src="https://raw.githubusercontent.com/wangyangparis/AirbusAnomalyDetectionProject/master/Images/STFTtrain.png" width="600" ></img></p>
+<p align="center"><img src="https://raw.githubusercontent.com/wangyangparis/AirbusAnomalyDetectionProject/master/Images/STFTtest.png" width="600" ></img></p>
 
 
 ## 4. Raw Signal Time Series Approach
@@ -147,10 +145,10 @@ In the case of a dimension reduction, only the bottleneck (latent space) is rele
 
 #### VAE latent space visualization
 
-<p align="center"><img src="https://github.com/wangyangparis/AirbusAnomalyDetectionProject/blob/master/Images/VAE Latent Space Visualisation.png"  width="450" ></img></p>
+<p align="center"><img src="https://raw.githubusercontent.com/wangyangparis/AirbusAnomalyDetectionProject/master/Images/VAE Latent Space Visualisation.png"  width="450" ></img></p>
 
 #### VAE Reconstruction error
-<p align="center"><img src="https://github.com/wangyangparis/AirbusAnomalyDetectionProject/blob/master/Images/ReconstructionVAE.png" width="450" ></img></p>
+<p align="center"><img src="https://raw.githubusercontent.com/wangyangparis/AirbusAnomalyDetectionProject/master/Images/ReconstructionVAE.png" width="450" ></img></p>
 
 Surprisingly, PCA gave better results when combined with detection algorithms.
 
@@ -172,11 +170,11 @@ Observations associated with a higher loss will be more likely to be outliers si
 
 This method gave first satisfactory results when combined with PCA with 20 components.
 
-<p align="center"><img src="https://github.com/wangyangparis/AirbusAnomalyDetectionProject/blob/master/Images/IsolationForest.png"  width="600" ></img></p>
+<p align="center"><img src="https://raw.githubusercontent.com/wangyangparis/AirbusAnomalyDetectionProject/master/Images/IsolationForest.png"  width="600" ></img></p>
                        
 #### OneClassSVM
                        
-<p align="center"><img src="https://github.com/wangyangparis/AirbusAnomalyDetectionProject/blob/master/Images/OneClassSVM.png"  width="600" ></img></p>
+<p align="center"><img src="https://raw.githubusercontent.com/wangyangparis/AirbusAnomalyDetectionProject/master/Images/OneClassSVM.png"  width="600" ></img></p>
                        
                        
 
