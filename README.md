@@ -5,7 +5,7 @@
 Dedication:
 First of all, I would like to dedicate this work to Louis Charles BREGUET, designer, builder, pioneer and inventor of modern helicopter.
 
-<p align="center"><img src="https://camo.githubusercontent.com/6d3162fa2c7b7b39f75868fe82cb32510e2c476f/68747470733a2f2f7374617469632e6c706e742e66722f696d616765732f323031362f30372f30392f343635393739352d343635393739302d672d6a70675f333636303935395f31303030783636372e6a7067"></img></p>
+<p align="center"><img src="https://camo.githubusercontent.com/6d3162fa2c7b7b39f75868fe82cb32510e2c476f/68747470733a2f2f7374617469632e6c706e742e66722f696d616765732f323031362f30372f30392f343635393739352d343635393739302d672d6a70675f333636303935395f31303030783636372e6a7067" width="600"></img></p>
 
 # Data Challenge - Anomaly Detection
 
@@ -61,7 +61,7 @@ The objective of time series comparison methods is to produce a distance metric 
 ### DTW (Dynamic Time Warping)
 In time series analysis, dynamic time warping (DTW) is one of the algorithms for measuring similarity between two temporal sequences, which may vary in speed. For instance, similarities in walking could be detected using DTW, even if one person was walking faster than the other, or if there were accelerations and decelerations during the course of an observation.
 
-<p align="center"><img src="https://github.com/wangyangparis/Airbus-Anomaly-Detection-Project/blob/master/Images/DTW.jpeg"></img></p>
+<p align="center"><img src="https://github.com/wangyangparis/Airbus-Anomaly-Detection-Project/blob/master/Images/DTW.jpeg" width="450"></img></p>
 
 Clearly these two series follow the same pattern, but the blue curve is longer than the red. If we apply the one-to-one match, shown in the top, the mapping is not perfectly synced up and the tail of the blue curve is being left out. DTW overcomes the issue by developing a one-to-many match so that the troughs and peaks with the same pattern are perfectly matched, and there is no left out for both curves(shown in the bottom top).
 
@@ -123,7 +123,7 @@ I observe the great difference of global patern of train and test dataset, in th
 #### VAE
 
 #### Reconstruction error
-<p align="center"><img src="https://github.com/wangyangparis/Airbus-Anomaly-Detection-Project/blob/master/Images/ReconstructionVAE.png"
+<p align="center"><img src="https://github.com/wangyangparis/Airbus-Anomaly-Detection-Project/blob/master/Images/ReconstructionVAE.png" width="450" ></img></p>
 
 
 ## 3. Dimension reduction
@@ -132,7 +132,7 @@ As the datasets are large, some detection algorithms would require to reduce the
 
 #### VAE latent space visualization
 
-<p align="center"><img src="https://github.com/wangyangparis/Airbus-Anomaly-Detection-Project/blob/master/Images/VAE Latent Space Visualisation.png"
+<p align="center"><img src="https://github.com/wangyangparis/Airbus-Anomaly-Detection-Project/blob/master/Images/VAE Latent Space Visualisation.png"  width="450" ></img></p>
 
 
 #### PCA
@@ -171,11 +171,11 @@ Observations associated with a higher loss will be more likely to be outliers si
 
 This method gave first satisfactory results when combined with PCA with 20 components.
 
-<p align="center"><img src="https://github.com/wangyangparis/Airbus-Anomaly-Detection-Project/blob/master/Images/IsolationForest.png"
+<p align="center"><img src="https://github.com/wangyangparis/Airbus-Anomaly-Detection-Project/blob/master/Images/IsolationForest.png"  width="600" ></img></p>
                        
 #### OneClassSVM
                        
-<p align="center"><img src="https://github.com/wangyangparis/Airbus-Anomaly-Detection-Project/blob/master/Images/OneClassSVM.png"
+<p align="center"><img src="https://github.com/wangyangparis/Airbus-Anomaly-Detection-Project/blob/master/Images/OneClassSVM.png"  width="600" ></img></p>
                        
                        
 
