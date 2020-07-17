@@ -33,26 +33,17 @@ There are in total 2511 test observations.
 
 ## Introduction
 1.1 What can be the anormalies?
-
 1.1.1 Aircrafte Flutter
-
 1.2 What are the possible approaches?
-
 1.2.1 Raw signal time series observation 
-
 1.2.2 Time Series Clustering
-
 1.2.3 Similarity
-
 1.2.4 DTW (Dynamic Time Warping)
-
 1.3 Periodogram-based distance
-
 1.4 First order/seconde order derivative and other feature engenieering 1.5 Build fonctionnal space
-
 1.6 Interpolation - Spline
-
 1.7 1st , 2nd order derivative
+
 ### Some physics before start
 ### What can be the anormalies?
 #### Aircrafte Flutter
@@ -110,15 +101,13 @@ The FFT contains information between 0 and fs, however, we know that the samplin
 
 I observe the great difference of global patern of train and test dataset, in the test dataset, a lot of samples are concentrated on 0Hz frenquency. While in the train dataset we can see a very strong density around 50Hz and 100Hz, and their multiples. This corresponde an hypothese of self-exciting ocillation anormaly.
 
-<p align="center"><img src="https://github.com/wangyangparis/Airbus-Anomaly-Detection-Project/blob/master/Images/STFTtrain.png" width="450" ></img></p>
-<p align="center"><img src="https://github.com/wangyangparis/Airbus-Anomaly-Detection-Project/blob/master/Images/STFTtest.png" width="450" ></img></p>
+<p align="center"><img src="https://github.com/wangyangparis/Airbus-Anomaly-Detection-Project/blob/master/Images/STFTtrain.png" width="600" ></img></p>
+<p align="center"><img src="https://github.com/wangyangparis/Airbus-Anomaly-Detection-Project/blob/master/Images/STFTtest.png" width="600" ></img></p>
 
 
 ## 4. Raw Signal Time Series Approach
 4.1 LSTM
-
 4.2 LOF + PCA
-
 4.3 Kernel PCA
 4.4 OneClassSVM
 4.5 Isolation Forest Raw data
@@ -127,8 +116,6 @@ I observe the great difference of global patern of train and test dataset, in th
 4.8 Isolation Forest Interpolation / 1st order derivative 4.9 Autoencoder with data +der1+der2
 4.10 VAE data+der1+der2
 4.11 LOF - 1st order derivative and 2nd order derivative 5 Data Augementation
-
-
 
 
 ## 3. Dimension reduction
