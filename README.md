@@ -33,14 +33,25 @@ There are in total 2511 test observations.
 
 ## Introduction
 1.1 What can be the anormalies?
+
 1.1.1 Aircrafte Flutter
+
 1.2 What are the possible approaches?
-1.2.1 Raw signal time series observation 1.2.2 Time Series Clustering
+
+1.2.1 Raw signal time series observation 
+
+1.2.2 Time Series Clustering
+
 1.2.3 Similarity
+
 1.2.4 DTW (Dynamic Time Warping)
+
 1.3 Periodogram-based distance
+
 1.4 First order/seconde order derivative and other feature engenieering 1.5 Build fonctionnal space
+
 1.6 Interpolation - Spline
+
 1.7 1st , 2nd order derivative
 ### Some physics before start
 ### What can be the anormalies?
@@ -103,13 +114,11 @@ I observe the great difference of global patern of train and test dataset, in th
 <p align="center"><img src="https://github.com/wangyangparis/Airbus-Anomaly-Detection-Project/blob/master/Images/STFTtest.png" width="450" ></img></p>
 
 
-
-
-
-
 ## 4. Raw Signal Time Series Approach
 4.1 LSTM
+
 4.2 LOF + PCA
+
 4.3 Kernel PCA
 4.4 OneClassSVM
 4.5 Isolation Forest Raw data
@@ -120,20 +129,11 @@ I observe the great difference of global patern of train and test dataset, in th
 4.11 LOF - 1st order derivative and 2nd order derivative 5 Data Augementation
 
 
-#### VAE
-
-#### Reconstruction error
-<p align="center"><img src="https://github.com/wangyangparis/Airbus-Anomaly-Detection-Project/blob/master/Images/ReconstructionVAE.png" width="450" ></img></p>
 
 
 ## 3. Dimension reduction
 
 As the datasets are large, some detection algorithms would require to reduce the dataset first. This can be done using adapted dimension reduction methods.
-
-#### VAE latent space visualization
-
-<p align="center"><img src="https://github.com/wangyangparis/Airbus-Anomaly-Detection-Project/blob/master/Images/VAE Latent Space Visualisation.png"  width="450" ></img></p>
-
 
 #### PCA
 
@@ -150,6 +150,13 @@ We can thus perform our analysis on the first 20 components given by the PCA.
 <p align="center"><img src="https://github.com/savoga/data-challenge-anomaly-detection/blob/master/img/autoencoder.png" width=500></img></p>
 
 In the case of a dimension reduction, only the bottleneck (latent space) is relevant for us.
+
+#### VAE latent space visualization
+
+<p align="center"><img src="https://github.com/wangyangparis/Airbus-Anomaly-Detection-Project/blob/master/Images/VAE Latent Space Visualisation.png"  width="450" ></img></p>
+
+#### VAE Reconstruction error
+<p align="center"><img src="https://github.com/wangyangparis/Airbus-Anomaly-Detection-Project/blob/master/Images/ReconstructionVAE.png" width="450" ></img></p>
 
 Surprisingly, PCA gave better results when combined with detection algorithms.
 
