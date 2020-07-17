@@ -66,7 +66,7 @@ The objective of time series comparison methods is to produce a distance metric 
 ### DTW (Dynamic Time Warping)
 In time series analysis, dynamic time warping (DTW) is one of the algorithms for measuring similarity between two temporal sequences, which may vary in speed. For instance, similarities in walking could be detected using DTW, even if one person was walking faster than the other, or if there were accelerations and decelerations during the course of an observation.
 
-<p align="center"><img src="https://github.com/wangyangparis/AirbusAnomalyDetectionProject/blob/master/Images/DTW.JPEG" width="450"></img></p>
+<p align="center"><img src="/Images/DTW.jpeg" width="450"></img></p>
 
 
 Clearly these two series follow the same pattern, but the blue curve is longer than the red. If we apply the one-to-one match, shown in the top, the mapping is not perfectly synced up and the tail of the blue curve is being left out. DTW overcomes the issue by developing a one-to-many match so that the troughs and peaks with the same pattern are perfectly matched, and there is no left out for both curves(shown in the bottom top).
