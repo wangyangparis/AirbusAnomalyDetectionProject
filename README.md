@@ -32,75 +32,108 @@ The training set consists of one file, airbus_test.csv, which has the same struc
 There are in total 2511 test observations.
 
 ## Introduction
+1.1 What can be the anormalies?
+1.1.1 Aircrafte Flutter
+1.2 What are the possible approaches?
+1.2.1 Raw signal time series observation 1.2.2 Time Series Clustering
+1.2.3 Similarity
+1.2.4 DTW (Dynamic Time Warping)
+1.3 Periodogram-based distance
+1.4 First order/seconde order derivative and other feature engenieering 1.5 Build fonctionnal space
+1.6 Interpolation - Spline
+1.7 1st , 2nd order derivative
+### Some physics before start
+### What can be the anormalies?
+#### Aircrafte Flutter
+Flutter is a dynamic instability of an elastic structure in a fluid flow, caused by positive feedback between the body's deflection and the force exerted by the fluid flow. In a linear system, "flutter point" is the point at which the structure is undergoing simple harmonic motion—zero net damping—and so any further decrease in net damping will result in a self-oscillation and eventual failure. "Net damping" can be understood as the sum of the structure's natural positive damping and the negative damping of the aerodynamic force. Flutter can be classified into two types: hard flutter, in which the net damping decreases very suddenly, very close to the flutter point; and soft flutter, in which the net damping decreases gradually. https://www.youtube.com/watch?v=qpJBvQXQC2M&t=59s
 
-For this challenge, I've chosen first to perform some basic analysis to understand the data. This analysis consists of displaying train/test data in order to spot the differences. This allowed me to draw conclusions on the difference of both datasets e.g. the presence of outliers, standardization, stationarity,... and to have a first idea of interesting features to use for the future of my work.
+https://www.youtube.com/watch?v=MEhVk57ydhw
 
-Then, I tried a large number of different algorithms. It turns out that simple Feature Engineering worked the best. I thus focused on this method using the best features as possible. Important to note that the package *tsfresh* brought significant value to my research.
+https://www.youtube.com/watch?v=0FeXjhUEXlc
 
-## 1. Data exploration
+What are the possible approaches?
 
-#### Autocorrelation
+### Raw signal time series
 
-5 first entries (columns):
+### Similarity
+The objective of time series comparison methods is to produce a distance metric between two input time series. The similarity or dissimilarity of two-time series is typically calculated by converting the data into vectors and calculating the Euclidean distance between those points in vector space.
 
-<p align="center"><img src="https://github.com/savoga/data-challenge-anomaly-detection/blob/master/img/first_entries.png"></img></p>
+### DTW (Dynamic Time Warping)
+In time series analysis, dynamic time warping (DTW) is one of the algorithms for measuring similarity between two temporal sequences, which may vary in speed. For instance, similarities in walking could be detected using DTW, even if one person was walking faster than the other, or if there were accelerations and decelerations during the course of an observation.
 
-5 random entries:
+<p align="center"><img src="https://github.com/wangyangparis/Airbus-Anomaly-Detection-Project/blob/master/Images/DTW.jpeg"></img></p>
 
-<p align="center"><img src="https://github.com/savoga/data-challenge-anomaly-detection/blob/master/img/random_entries.png"></img></p>
+Clearly these two series follow the same pattern, but the blue curve is longer than the red. If we apply the one-to-one match, shown in the top, the mapping is not perfectly synced up and the tail of the blue curve is being left out. DTW overcomes the issue by developing a one-to-many match so that the troughs and peaks with the same pattern are perfectly matched, and there is no left out for both curves(shown in the bottom top).
 
-Since random entries give much more volatile trends, our first conclusion is that autocorrelation may be a good feature to consider (which is often the case with time series).
 
-#### Standardization
+#### Periodogram-based distance
 
-Looking at standardization is important to make sure all features contribute equally to the analysis.
+<p align="center"><img src="https://github.com/wangyangparis/Airbus-Anomaly-Detection-Project/blob/master/Images/spectrum.png" width="450" ></img></p>
 
-After sampling few data on both sets, we can plot few distributions:
+#### Build fonctionnal space¶
+The Nyquist–Shannon sampling theorem is a theorem in the field of digital signal processing which serves as a fundamental bridge between continuous-time signals and discrete-time signals. It establishes a sufficient condition for a sample rate that permits a discrete sequence of samples to capture all the information from a continuous-time signal of finite bandwidth.
 
-<p align="center"><img src="https://github.com/savoga/data-challenge-anomaly-detection/blob/master/img/standardization_all.png"></img></p>
+If a function ${\displaystyle }x(t)$ contains no frequencies higher than B hertz, it is completely determined by giving its ordinates at a series of points spaced ${\displaystyle }{\displaystyle 1/(2B)}$ seconds apart.
 
-Graphs from train set (left) indicates that data are standardized.
-We can draw the same conclusion for the graph of the test set, however a possible presence of outliers give more spread values (higher variance). This will be confirmed in the next section.
+A sufficient sample-rate is therefore anything larger than ${\displaystyle }2B$ samples per second. Equivalently, for a given sample rate ${\displaystyle }f_{s}$, perfect reconstruction is guaranteed possible for a bandlimit ${\displaystyle }{\displaystyle B<f_{s}/2}$.
 
-#### Outlier presence
+#### Interpolation - Spline
 
-The PCA (see explanation below) allows us to display observations in 2 dimensions. We can thus easily spot outliers on the test set (right).
+In mathematics, a spline is a special function defined piecewise by polynomials. In interpolating problems, spline interpolation is often preferred to polynomial interpolation because it yields similar results, even when using low degree polynomials, while avoiding Runge's phenomenon for higher degrees.
 
-<p align="center"><img src="https://github.com/savoga/data-challenge-anomaly-detection/blob/master/img/pca_all.png"></img></p>
+## 2.  Frequency Domaine approach with 2 D and 3 D STFT Matrix  
 
-#### Stationarity
+### Frequency Domaine
+Frequency domain refers to the analysis of mathematical functions or signals with respect to frequency, rather than time. Put simply, a time-domain graph shows how a signal changes over time, whereas a frequency-domain graph shows how much of the signal lies within each given frequency band over a range of frequencies.
 
-2 random observations from the train set:
+#### Perodogram
 
-<p align="center"><img src="https://github.com/savoga/data-challenge-anomaly-detection/blob/master/img/stationarity_train.png"></img></p>
+<p align="center"><img src="https://github.com/wangyangparis/Airbus-Anomaly-Detection-Project/blob/master/Images/PSD.png" width="450" ></img></p>
 
-We can see that the both series seem quite stationary. It's less obvious for random observations for the test set:
+#### FFT Fast Fourier Transformation
+The DTFT, X(e jΩ), is periodic. One period extends from f = 0 to fs, where fs is the sampling frequency.
 
-<p align="center"><img src="https://github.com/savoga/data-challenge-anomaly-detection/blob/master/img/stationarity_test.png"></img></p>
+The FFT contains information between 0 and fs, however, we know that the sampling frequency 5 must be at least twice the highest frequency component. Therefore, the signal’s spectrum should be entirly below fs 2 , the Nyquist frequency.
 
-Although the first observation can seem stationary, the mean is quite high compared to most of the observations (as seen previously) which makes it an outlier.
+<p align="center"><img src="https://github.com/wangyangparis/Airbus-Anomaly-Detection-Project/blob/master/Images/FFT.png" width="450" ></img></p>
 
-## 2. Data augmentation
+I observe the great difference of global patern of train and test dataset, in the test dataset, a lot of samples are concentrated on 0Hz frenquency. While in the train dataset we can see a very strong density around 50Hz and 100Hz, and their multiples. This corresponde an hypothese of self-exciting ocillation anormaly.
 
-Since both datasets have a relatively low amount of observations, it can be useful to consider data augmentation methods to grow our datasets. There are numerous ways of doing so with time series, I tried few of them.
+<p align="center"><img src="https://github.com/wangyangparis/Airbus-Anomaly-Detection-Project/blob/master/Images/STFTtrain.png" width="450" ></img></p>
+<p align="center"><img src="https://github.com/wangyangparis/Airbus-Anomaly-Detection-Project/blob/master/Images/STFTtest.png" width="450" ></img></p>
 
-#### Adding random noise
 
-The easiest way to perform data augmentation is to add a noise to the data. Concretely, it is done as such:
 
-```
-mu, sigma = 0, 0.1
-noise = np.random.normal(mu, sigma, [data.shape[0],data.shape[1]])
-data_noise = data + noise
-data_extend = np.concatenate((data, data_noise), axis=0)
-```
 
-Although this is fairly simple, it allowed me to slightly boost my detection score.
+
+
+## 4. Raw Signal Time Series Approach
+4.1 LSTM
+4.2 LOF + PCA
+4.3 Kernel PCA
+4.4 OneClassSVM
+4.5 Isolation Forest Raw data
+4.6 LOF + PCA + Derivatives
+4.7 LOF interpolated data
+4.8 Isolation Forest Interpolation / 1st order derivative 4.9 Autoencoder with data +der1+der2
+4.10 VAE data+der1+der2
+4.11 LOF - 1st order derivative and 2nd order derivative 5 Data Augementation
+
+
+#### VAE
+
+#### Reconstruction error
+<p align="center"><img src="https://github.com/wangyangparis/Airbus-Anomaly-Detection-Project/blob/master/Images/ReconstructionVAE.png"
 
 
 ## 3. Dimension reduction
 
 As the datasets are large, some detection algorithms would require to reduce the dataset first. This can be done using adapted dimension reduction methods.
+
+#### VAE latent space visualization
+
+<p align="center"><img src="https://github.com/wangyangparis/Airbus-Anomaly-Detection-Project/blob/master/Images/VAE Latent Space Visualisation.png"
+
 
 #### PCA
 
@@ -124,23 +157,6 @@ Surprisingly, PCA gave better results when combined with detection algorithms.
 
 In order to detect outliers, plenty of algorithms are already implemented and quite easy to use.
 
-#### Stationarity test
-
-A famous statistic test for testing stationarity is the <a href="https://en.wikipedia.org/wiki/Augmented_Dickey%E2%80%93Fuller_test">Augmented Dickey-Fuller test</a>. Essentially, it tests the presence of a unit root.
-
-My idea was to compute the test on each observation and score it based on the *p-value*. Doing so on few observations gave quite promising results.
-
-<p align="center"><img src="https://github.com/savoga/data-challenge-anomaly-detection/blob/master/img/adf_ts.png"></img></div>
-
-```
-ADF p-value: 0.0
-ADF p-value: 1.4514797225057198e-23
-```
-
-The p-value is higher of the second serie so there is a higher chance to accept the unit root hypothesis; the serie is more likely to be not stationary.
-
-The problem is that computing the test on all the observations was quite a pain; the series are too long and it makes the test computationally not feasible. Alternatively, I tried to compute the test on reduced data (after PCA or smoothing). But the results were not so good.
-
 #### Autoencoder
 
 Autoencoders can be used to learn about a distribution and reconstruct some data. The method consists of learning on the train set and scoring on the test set using the following loss function:
@@ -154,6 +170,14 @@ Observations associated with a higher loss will be more likely to be outliers si
 <a href="https://en.wikipedia.org/wiki/Isolation_forest">Isolation forests</a> are quite intuitive to detect outliers. In short, they allow to isolate abnormal data that have significantly different attributes.
 
 This method gave first satisfactory results when combined with PCA with 20 components.
+
+<p align="center"><img src="https://github.com/wangyangparis/Airbus-Anomaly-Detection-Project/blob/master/Images/IsolationForest.png"
+                       
+#### OneClassSVM
+                       
+<p align="center"><img src="https://github.com/wangyangparis/Airbus-Anomaly-Detection-Project/blob/master/Images/OneClassSVM.png"
+                       
+                       
 
 #### Local Outlier Factor
 
@@ -169,93 +193,19 @@ The reachability-distance tells us how far is a point starting *from* its neighb
 
 The distance metric I used is simply the *euclidean* distance. One of the main advantage of using such an easy metric is that I could easily introduce binary variables when doing feature engineering.
 
-#### Score averaging
+#### Stacking
 
-I tried to run several models and then averaging their scores but the results were not satisfactory.
+I tried to run several models and then to stack their scores but the results were not satisfactory.
 
 ## 5. Feature engineering
 
-Feature engineering played a huge part in this project as I could achieve significantly better results using relevant feature.
+Finally, the statistical feature engineering seems to be the best for this project.
 
-During this challenge I found out a library called <a href="https://tsfresh.readthedocs.io/en/latest/">tsfresh</a> that I found very powerful. It has more than 60 features implemented for time series.
 
-The 5 features that gave me the best scores are the following:
 
-- autocorrelation (lag 3)
 
-- mean
 
-- max
-
-- c3: <img src="https://github.com/savoga/data-challenge-anomaly-detection/blob/master/img/c3.gif"></img>
-
-- cid: <img src="https://github.com/savoga/data-challenge-anomaly-detection/blob/master/img/cid.gif"></img>
-  
-- symmetry looking: <img src="https://github.com/savoga/data-challenge-anomaly-detection/blob/master/img/symmetry-looking.gif"></img>
-  
-The last three features allow to measure linearity, complexity and symmetry of a serie. More details can be found on the library website.
-
-## 6. Approaches
-
-I used various approaches for this project:
-
-Table of Contents
-
-0 Airbus Helicopter Anormaly Detection  
-0.1 Challenge Large Scale Machine Learning
-0.2 Functional anomaly detection
-0.3 The properties of the dataset:
-0.4 The performance criterion: 0.5 Import
-0.5.1 Load and investigate the data
-0.5.2 A sample plot 1 Some physics before start
-
-1.1 What can be the anormalies?
-1.1.1 Aircrafte Flutter
-1.2 What are the possible approaches?
-1.2.1 Raw signal time series observation 1.2.2 Time Series Clustering
-1.2.3 Similarity
-1.2.4 DTW (Dynamic Time Warping)
-1.3 Periodogram-based distance
-1.4 First order/seconde order derivative and other feature engenieering 1.5 Build fonctionnal space
-1.6 Interpolation - Spline
-1.7 1st , 2nd order derivative
-
-2 Frequency Domaine 
-2.1 Perodogram
-2.2 FFT Fast Fourier Transformation
-2.3 STFT Short-term Fourier Transformation 2.4 Time–frequency analysis
-
-3 Frequency Domaine approach with STFT Matrix based 
-3.1 2 D and 3 D STFT Matrix
-3.2 STFT with Univariate Time Series treatment
-3.2.1 LOF - on STFT 61-dimensional space
-3.2.2 LOF on a STFT PCA 10-dimensional space 3.3 3D STFT Matrix and LSTM - Multivariate Time Series 3.4 3D STFT VAE conv2D
-3.4.1 Train VAE on Frequency Domain 3.4.2 Reconstruction Error
-3.4.3 VAE Latent Space Visualisation
-3.4.3.1 IsolationForest 
-
-4 Raw Signal Time Series Approach
-4.1 LSTM
-4.2 LOF + PCA
-4.3 Kernel PCA
-4.4 OneClassSVM
-4.5 Isolation Forest Raw data
-4.6 LOF + PCA + Derivatives
-4.7 LOF interpolated data
-4.8 Isolation Forest Interpolation / 1st order derivative 4.9 Autoencoder with data +der1+der2
-4.10 VAE data+der1+der2
                                                                                                                                                   
-4.11 LOF - 1st order derivative and 2nd order derivative 5 Data Augementation
 
-5.1 Standartized data
-5.2 construction of new features
 
-6 Statistiques Feature Engineering Approche
-6.1 Baseline models with hyperparameter tuning
-6.2 New Features Construction
-6.3 Combine raw data + new features
-6.4 Feature construction with 1st/2nd order derivatives and FFT 6.5 Test new features
 
-7 History
-7.1 Prepare a file for submission
-7.2 Best score:79% ensemble OCSVM+Isolation Forest
