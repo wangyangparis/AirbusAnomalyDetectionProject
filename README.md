@@ -1,6 +1,5 @@
 # Airbus Anomaly Detection Project
 
-<p align="center"><img src="https://raw.githubusercontent.com/wangyangparis/AirbusAnomalyDetectionProject/blob/master/Images/DTW.jpeg" width="450"></img></p>
 
 <p align="center"><img src="https://raw.githubusercontent.com/wangyangparis/AirbusAnomalyDetectionProject/master/Images/DTW.jpeg" width="450"></img></p>
 
