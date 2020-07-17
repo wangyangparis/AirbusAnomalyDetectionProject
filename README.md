@@ -32,18 +32,19 @@ The training set consists of one file, airbus_test.csv, which has the same struc
 There are in total 2511 test observations.
 
 ## Introduction
-1.1 What can be the anormalies?
+- What can be the anormalies?
 
-1.2 What are the possible approaches?
-1.2.1 Raw signal time series observation 
-1.2.2 Time Series Clustering
-1.2.3 Similarity
-1.2.4 DTW (Dynamic Time Warping)
+- What are the possible approaches?
+- Raw signal time series observation 
+- Time Series Clustering
+- Similarity
+- DTW (Dynamic Time Warping)
 
-1.3 Periodogram-based distance
-1.4 First order/seconde order derivative and other feature engenieering 1.5 Build fonctionnal space
-1.6 Interpolation - Spline
-1.7 1st , 2nd order derivative
+- Periodogram-based distance
+- First order/seconde order derivative and other feature engenieering 
+- Build fonctionnal space
+- Interpolation - Spline
+- 1st , 2nd order derivative
 
 ### Some physics before start
 ### What can be the anormalies?
@@ -64,7 +65,7 @@ The objective of time series comparison methods is to produce a distance metric 
 ### DTW (Dynamic Time Warping)
 In time series analysis, dynamic time warping (DTW) is one of the algorithms for measuring similarity between two temporal sequences, which may vary in speed. For instance, similarities in walking could be detected using DTW, even if one person was walking faster than the other, or if there were accelerations and decelerations during the course of an observation.
 
-<p align="center"><img src="https://github.com/wangyangparis/AirbusAnomalyDetectionProject/Images/DTW.jpeg" width="450"></img></p>
+<p align="center"><img src="https://github.com/wangyangparis/AirbusAnomalyDetectionProject/Images/DTW.JPEG" width="450"></img></p>
 
 Clearly these two series follow the same pattern, but the blue curve is longer than the red. If we apply the one-to-one match, shown in the top, the mapping is not perfectly synced up and the tail of the blue curve is being left out. DTW overcomes the issue by developing a one-to-many match so that the troughs and peaks with the same pattern are perfectly matched, and there is no left out for both curves(shown in the bottom top).
 
