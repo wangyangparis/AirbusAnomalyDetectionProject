@@ -109,6 +109,35 @@ I observe the great difference of global patern of train and test dataset, in th
 <p align="center"><img src="https://raw.githubusercontent.com/wangyangparis/AirbusAnomalyDetectionProject/master/Images/STFTtrain.png" width="600" ></img></p>
 <p align="center"><img src="https://raw.githubusercontent.com/wangyangparis/AirbusAnomalyDetectionProject/master/Images/STFTtest.png" width="600" ></img></p>
 
+## 3. Dimension reduction
+
+As the datasets are large, some detection algorithms would require to reduce the dataset first. This can be done using adapted dimension reduction methods.
+
+#### PCA
+
+The <a href="https://en.wikipedia.org/wiki/Principal_component_analysis">PCA</a> allows us to reduce the dimensions of both datasets into components that best explain the variance. The graph below shows that the first 20 components seem to explain most of the variance.
+
+<p align="center"><img src="https://images.app.goo.gl/MRWSbdmvYeUgj8uy8"></img></p>
+
+We can thus perform our analysis on the first 20 components given by the PCA.
+
+#### Autoencoder
+
+<a href="https://en.wikipedia.org/wiki/Autoencoder">Autoencoder</a> is a more recent algorithm that can be used to perform dimension reduction. It is based on neural networks and can find complex separation functions (whereas PCA is for linear separation only).
+
+<p align="center"><img src="https://www.compthree.com/images/blog/ae/ae.png" width=500></img></p>
+
+In the case of a dimension reduction, only the bottleneck (latent space) is relevant for us.
+
+#### VAE latent space visualization
+
+<p align="center"><img src="https://raw.githubusercontent.com/wangyangparis/AirbusAnomalyDetectionProject/master/Images/VAE Latent Space Visualisation.png"  width="450" ></img></p>
+
+#### VAE Reconstruction error
+<p align="center"><img src="https://raw.githubusercontent.com/wangyangparis/AirbusAnomalyDetectionProject/master/Images/ReconstructionVAE.png" width="450" ></img></p>
+
+Surprisingly, PCA gave better results when combined with detection algorithms.
+
 
 ## 4. Raw Signal Time Series Approach
 4.1 LSTM
@@ -123,36 +152,8 @@ I observe the great difference of global patern of train and test dataset, in th
 4.11 LOF - 1st order derivative and 2nd order derivative 5 Data Augementation
 
 
-## 3. Dimension reduction
 
-As the datasets are large, some detection algorithms would require to reduce the dataset first. This can be done using adapted dimension reduction methods.
-
-#### PCA
-
-The <a href="https://en.wikipedia.org/wiki/Principal_component_analysis">PCA</a> allows us to reduce the dimensions of both datasets into components that best explain the variance. The graph below shows that the first 20 components seem to explain most of the variance.
-
-<p align="center"><img src="https://github.com/savoga/data-challenge-anomaly-detection/blob/master/img/pca_variance.png"></img></p>
-
-We can thus perform our analysis on the first 20 components given by the PCA.
-
-#### Autoencoder
-
-<a href="https://en.wikipedia.org/wiki/Autoencoder">Autoencoder</a> is a more recent algorithm that can be used to perform dimension reduction. It is based on neural networks and can find complex separation functions (whereas PCA is for linear separation only).
-
-<p align="center"><img src="https://github.com/savoga/data-challenge-anomaly-detection/blob/master/img/autoencoder.png" width=500></img></p>
-
-In the case of a dimension reduction, only the bottleneck (latent space) is relevant for us.
-
-#### VAE latent space visualization
-
-<p align="center"><img src="https://raw.githubusercontent.com/wangyangparis/AirbusAnomalyDetectionProject/master/Images/VAE Latent Space Visualisation.png"  width="450" ></img></p>
-
-#### VAE Reconstruction error
-<p align="center"><img src="https://raw.githubusercontent.com/wangyangparis/AirbusAnomalyDetectionProject/master/Images/ReconstructionVAE.png" width="450" ></img></p>
-
-Surprisingly, PCA gave better results when combined with detection algorithms.
-
-## 4. Detection algorithms
+## 5. Detection algorithms
 
 In order to detect outliers, plenty of algorithms are already implemented and quite easy to use.
 
@@ -196,7 +197,7 @@ The distance metric I used is simply the *euclidean* distance. One of the main a
 
 I tried to run several models and then to stack their scores but the results were not satisfactory.
 
-## 5. Feature engineering
+## 6. Feature engineering
 
 Finally, the statistical feature engineering seems to be the best for this project.
 
